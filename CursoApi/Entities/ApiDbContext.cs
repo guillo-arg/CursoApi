@@ -10,7 +10,7 @@ namespace CursoApi.Entities
 {
     public class ApiDbContext : IdentityDbContext<User, Role, string>
     {
-
+        public DbSet<Course> Courses { get; set; }
         public ApiDbContext(DbContextOptions<ApiDbContext> options) : base(options)
         {
         }
