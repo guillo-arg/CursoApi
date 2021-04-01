@@ -63,5 +63,26 @@ namespace CursoApi.Controllers
             return BadRequest(ModelState.Values.FirstOrDefault().Errors.FirstOrDefault().ErrorMessage);
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto) {
+            if (ModelState.IsValid)
+            {
+                LogicResponse response = await _accountLogic.Login(loginDto);
+
+                if (response.Success)
+                {
+                    return Ok(response.Message);
+                }
+                else
+                {
+                    return BadRequest(response.Message);
+                }
+            }
+
+            return BadRequest(ModelState.Values.FirstOrDefault().Errors.FirstOrDefault().ErrorMessage);
+        }
+
     }
 }

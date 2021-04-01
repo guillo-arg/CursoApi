@@ -10,5 +10,6 @@ namespace CursoApi.Logic.Contracts
     public interface IAccountLogic
     {
         LogicResponse Register(RegisterDto registerDto);
+        Task<LogicResponse> Login(LoginDto loginDto);
     }
 }
