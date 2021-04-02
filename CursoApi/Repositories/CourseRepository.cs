@@ -65,5 +65,18 @@ namespace CursoApi.Repositories
         {
             return _apiDbContext.Courses.Where(x => x.Id == id).FirstOrDefault();
         }
+
+        public void Delete(Course course)
+        {
+            try
+            {
+                _apiDbContext.Courses.Remove(course);
+                _apiDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(); ;
+            }
+        }
     }
 }

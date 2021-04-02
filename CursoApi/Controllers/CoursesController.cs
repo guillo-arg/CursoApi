@@ -75,5 +75,22 @@ namespace CursoApi.Controllers
 
             return BadRequest(ModelState.Values.FirstOrDefault().Errors.FirstOrDefault().ErrorMessage);
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Delete(int id) {
+            LogicResponse response = new LogicResponse();
+            response = _courseLogic.Delete(id);
+            if (response.Success)
+            {
+                return Ok(id);
+            }
+            else
+            {
+                return BadRequest(response.Message);
+            }
+
+
+        }
     }
 }

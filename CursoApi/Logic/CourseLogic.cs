@@ -42,6 +42,36 @@ namespace CursoApi.Logic
             return response;
         }
 
+        public LogicResponse Delete(int id)
+        {
+            LogicResponse response = new LogicResponse();
+            Course course = _courseRepository.GetById(id);
+
+            if (course == null)
+            {
+                response.Success = false;
+                response.Message = "No se encontró el curso";
+
+                return response;
+            }
+
+            try
+            {
+                _courseRepository.Delete(course);
+                response.Success = true;
+                response.Message = course.Id.ToString();
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "Error en la base de datos";
+
+            }
+
+
+            return response;
+        }
+
         public LogicResponse Edit(CourseDto courseDto)
         {
             LogicResponse response = new LogicResponse();

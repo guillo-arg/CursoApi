@@ -12,5 +12,6 @@ namespace CursoApi.Repositories.Contracts
         int Create(Course course);
         Course GetById(int id);
         void Edit(Course course);
+        void Delete(Course course);
     }
 }
