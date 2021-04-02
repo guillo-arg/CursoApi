@@ -32,6 +32,22 @@ namespace CursoApi.Controllers
             return Ok(courses);
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            CourseDto courseDto = _courseLogic.GetById(id);
+
+            if (courseDto != null)
+            {
+                return Ok(courseDto);
+            }
+            else
+            {
+                return BadRequest("No se encontró el curso");
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CourseDto courseDto) {
 

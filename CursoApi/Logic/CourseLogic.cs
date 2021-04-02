@@ -105,5 +105,13 @@ namespace CursoApi.Logic
         {
             return _courseRepository.GetAll();
         }
+
+        public CourseDto GetById(int id)
+        {
+            Course course = _courseRepository.GetById(id);
+            CourseDto courseDto = _mapper.Map<Course, CourseDto>(course);
+
+            return courseDto;
+        }
     }
 }

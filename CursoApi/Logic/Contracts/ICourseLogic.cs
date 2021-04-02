@@ -14,5 +14,6 @@ namespace CursoApi.Logic.Contracts
         LogicResponse Create(CourseDto courseDto);
         LogicResponse Edit(CourseDto courseDto);
         LogicResponse Delete(int id);
+        CourseDto GetById(int id);
     }
 }
