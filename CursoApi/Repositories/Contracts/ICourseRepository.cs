@@ -10,5 +10,7 @@ namespace CursoApi.Repositories.Contracts
     {
         List<Course> GetAll();
         int Create(Course course);
+        Course GetById(int id);
+        void Edit(Course course);
     }
 }

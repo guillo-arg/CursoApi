@@ -42,6 +42,35 @@ namespace CursoApi.Logic
             return response;
         }
 
+        public LogicResponse Edit(CourseDto courseDto)
+        {
+            LogicResponse response = new LogicResponse();
+            Course course = _mapper.Map<CourseDto, Course>(courseDto);
+            Course courseDb = _courseRepository.GetById(course.Id);
+
+            if (courseDb == null)
+            {
+                response.Success = false;
+                response.Message = "No se encontró el curso";
+
+                return response;
+            }
+
+            try
+            {
+                _courseRepository.Edit(course);
+                response.Success = true;
+                response.Message = course.Id.ToString();
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "Error al almacenar en la base de datos";
+            }
+
+            return response;
+        }
+
         public List<Course> GetAll()
         {
             return _courseRepository.GetAll();

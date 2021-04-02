@@ -54,5 +54,26 @@ namespace CursoApi.Controllers
             return BadRequest(ModelState.Values.FirstOrDefault().Errors.FirstOrDefault().ErrorMessage);
             
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Edit([FromBody] CourseDto courseDto) {
+
+            if (ModelState.IsValid)
+            {
+                LogicResponse response = new LogicResponse();
+                response = _courseLogic.Edit(courseDto);
+
+                if (response.Success)
+                {
+                    return Ok(response.Message);
+                }
+                else
+                {
+                    return BadRequest(response.Message);
+                }
+            }
+
+            return BadRequest(ModelState.Values.FirstOrDefault().Errors.FirstOrDefault().ErrorMessage);
+        }
     }
 }

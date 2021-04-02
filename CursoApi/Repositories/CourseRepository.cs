@@ -33,9 +33,37 @@ namespace CursoApi.Repositories
 
         }
 
+        public void Edit(Course course)
+        {
+            Course courseDb = GetById(course.Id);
+            Map(courseDb, course);
+
+            try
+            {
+                _apiDbContext.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(); ;
+            }
+        }
+
+        private void Map(Course courseDb, Course course)
+        {
+            courseDb.Description = course.Description;
+            courseDb.Name = course.Name;
+            course.Price = course.Price;
+        }
+
         public List<Course> GetAll()
         {
             return _apiDbContext.Courses.ToList();
+        }
+
+        public Course GetById(int id)
+        {
+            return _apiDbContext.Courses.Where(x => x.Id == id).FirstOrDefault();
         }
     }
 }
