@@ -44,7 +44,7 @@ namespace CursoApi.Controllers
             }
             else
             {
-                return BadRequest("No se encontró el curso");
+                return NotFound("No se encontró el curso");
             }
         }
 
@@ -59,7 +59,7 @@ namespace CursoApi.Controllers
 
                 if (response.Success)
                 {
-                    return Ok(response.Message);
+                    return Created($"/Courses/{response.Message}", courseDto);
                 }
                 else
                 {
