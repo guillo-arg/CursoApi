@@ -8,6 +8,10 @@ namespace CursoApi.Entities
 {
     public class User : IdentityUser<string>
     {
+        public User()
+        {
+            Enabled = true;
+        }
         public bool Enabled { get; set; }
     }
 }
