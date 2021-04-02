@@ -9,5 +9,6 @@ namespace CursoApi.Repositories.Contracts
     public interface ICourseRepository
     {
         List<Course> GetAll();
+        int Create(Course course);
     }
 }

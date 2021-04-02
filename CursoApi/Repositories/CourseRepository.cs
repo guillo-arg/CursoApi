@@ -16,6 +16,23 @@ namespace CursoApi.Repositories
             _apiDbContext = apiDbContext;
         }
 
+        public int Create(Course course)
+        {
+            _apiDbContext.Courses.Add(course);
+
+            try
+            {
+                _apiDbContext.SaveChanges();
+                
+                return course.Id;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+
+        }
+
         public List<Course> GetAll()
         {
             return _apiDbContext.Courses.ToList();
