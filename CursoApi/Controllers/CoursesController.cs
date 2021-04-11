@@ -59,6 +59,7 @@ namespace CursoApi.Controllers
 
                 if (response.Success)
                 {
+                    courseDto.Id = Convert.ToInt32(response.Message);
                     return Created($"/Courses/{response.Message}", courseDto);
                 }
                 else
