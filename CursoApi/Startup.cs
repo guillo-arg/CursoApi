@@ -117,8 +117,10 @@ namespace CursoApi
 
             services.AddTransient<IAccountLogic, AccountLogic>();
             services.AddTransient<ICourseLogic, CourseLogic>();
+            services.AddTransient<IModuleLogic, ModuleLogic>();
 
             services.AddTransient<ICourseRepository, CourseRepository>();
+            services.AddTransient<IModuleRepository, ModuleRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

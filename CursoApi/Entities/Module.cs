@@ -5,14 +5,12 @@ using System.Threading.Tasks;
 
 namespace CursoApi.Entities
 {
-    public class Course
+    public class Module
     {
         public int Id { get; set; }
+        public int Position { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public double Price { get; set; }
-        public List<Module> Modules{ get; set; }
-
+        public Course Course{ get; set; }
 
     }
 }
