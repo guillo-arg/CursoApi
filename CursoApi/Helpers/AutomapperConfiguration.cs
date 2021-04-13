@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CursoApi.Dtos.Courses;
+using CursoApi.Dtos.Lessons;
 using CursoApi.Dtos.Modules;
 using CursoApi.Entities;
 using System;
@@ -24,7 +25,15 @@ namespace CursoApi.Helpers
             {
                 instance = new MapperConfiguration(conf => { 
                     conf.CreateMap<Course, CourseDto>().ReverseMap();
-                    conf.CreateMap<Module, ModuleDto>().ForMember(dest => dest.CourseId, opt => opt.MapFrom(src => src.Course.Id)).ReverseMap();
+
+                    conf.CreateMap<Module, ModuleDto>()
+                        .ForMember(dest => dest.CourseId, opt => opt.MapFrom(src => src.Course.Id))
+                        .ReverseMap();
+
+                    conf.CreateMap<Lesson, LessonDto>()
+                        .ForMember(dest => dest.ModuleId, opt => opt.MapFrom(src => src.Module.Id))
+                        .ForMember(dest => dest.CourseId, opt => opt.MapFrom(src => src.Module.Course.Id))
+                        .ReverseMap();
                 }); 
             }
 

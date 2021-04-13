@@ -12,6 +12,7 @@ namespace CursoApi.Entities
     {
         public DbSet<Course> Courses { get; set; }
         public DbSet<Module> Modules { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
         public ApiDbContext(DbContextOptions<ApiDbContext> options) : base(options)
         {
         }

@@ -5,13 +5,11 @@ using System.Threading.Tasks;
 
 namespace CursoApi.Entities
 {
-    public class Module
+    public class Lesson
     {
         public int Id { get; set; }
-        public int Position { get; set; }
         public string Name { get; set; }
-        public Course Course{ get; set; }
-        public List<Lesson> Lessons { get; set; }
-
+        public int Position { get; set; }
+        public Module Module { get; set; }
     }
 }
